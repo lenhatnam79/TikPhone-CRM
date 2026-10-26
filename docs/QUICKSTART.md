@@ -10,4 +10,4 @@
 
 **AI:** bật khi backend có API key và model phù hợp. Khi chưa cấu hình, app vẫn cung cấp mẫu tin và lưu bản nháp.
 
-Bản phát triển chưa ký phát hành. Bản Mac đã chạy kiểm thử; bản Windows chưa được chạy trên máy Windows. Kết nối TikTok cần thử với điện thoại thật. Toàn bộ trạng thái kiểm thử được ghi trong [TEST-REPORT.md](TEST-REPORT.md).
+Bản phát triển chưa ký phát hành. Bản Mac đã chạy kiểm thử tại máy phát triển; bản Windows đã qua smoke test trên GitHub Actions Windows. Kết nối TikTok cần thử với điện thoại thật. Toàn bộ trạng thái kiểm thử được ghi trong [TEST-REPORT.md](TEST-REPORT.md).

@@ -3,6 +3,8 @@
 Ứng dụng vận hành nội bộ dành cho một agency/đội creator: nhãn hàng, sản phẩm, cơ hội hợp tác, follow-up, bản nháp và kết nối Android thật. Giao diện tiếng Việt.
 
 
+**Mã nguồn:** [lenhatnam79/TikPhone-CRM](https://github.com/lenhatnam79/TikPhone-CRM). Bản 0.1.1 đã qua CI Ubuntu/Windows và smoke test desktop trên Mac/Windows. Chi tiết theo commit ở báo cáo kiểm thử.
+
 **Bắt đầu:** [Hướng dẫn nhanh](docs/QUICKSTART.md) · [Kiến trúc](docs/ARCHITECTURE.md) · [Kiểm thử](docs/TEST-REPORT.md) · [Phát hành](docs/RELEASING.md)
 
 ![Giao diện với dữ liệu minh hoạ](docs/assets/preview.png)
@@ -12,7 +14,7 @@
 - **Mac Apple Silicon (M1/M2/M3/M4…):** giải nén bản Mac và mở `Affiliate Desk.app`.
 - **Windows x64:** giải nén toàn bộ bản Windows vào một thư mục rồi mở `Affiliate Desk.exe`. Giữ nguyên các file và thư mục đi kèm.
 - Bản desktop được đóng gói cùng backend, Python runtime và ADB/scrcpy. Không cần Node.js hoặc Python cài riêng để dùng bản đóng gói.
-- Bản phát triển chưa có chứng chỉ ký phát hành/notarization. Mac có thể yêu cầu xác nhận mở ứng dụng trong Privacy & Security. Bản Windows cần kiểm thử trên thiết bị Windows trước khi dùng chính thức.
+- Bản phát triển chưa có chứng chỉ ký phát hành/notarization. Mac có thể yêu cầu xác nhận mở ứng dụng trong Privacy & Security. Bản Windows đã qua smoke test trên Windows của GitHub Actions; kết nối điện thoại thật vẫn cần kiểm thử tại máy sử dụng.
 
 Lần đầu trên bản desktop local, mã thiết lập được điền sẵn. Nhập tên, email và mật khẩu từ 12 ký tự để tạo workspace. Khi dùng server chung hoặc chạy source, dùng mã thiết lập in trong terminal của server. Email là tên đăng nhập nội bộ, không gửi email xác nhận. Không nhập mật khẩu TikTok vào CRM.
 
