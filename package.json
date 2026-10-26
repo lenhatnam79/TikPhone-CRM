@@ -1,0 +1,89 @@
+{
+  "name": "affiliate-desk",
+  "version": "0.1.1",
+  "private": true,
+  "description": "Creator and agency operations workspace",
+  "author": "Affiliate Desk",
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "check": "node --check app/app.js && node --check desktop/main.cjs && node --check desktop/preload.cjs",
+    "build:mac": "electron-builder --mac dir",
+    "build:win": "electron-builder --win zip --x64",
+    "test": "python3 -m unittest discover -s tests -v",
+    "test:ui": "node tests/e2e.cjs",
+    "test:desktop": "node tests/desktop-smoke.cjs",
+    "format": "prettier --write app/*.js app/*.css app/*.html desktop/*.cjs desktop/*.html tests/*.cjs"
+  },
+  "devDependencies": {
+    "electron": "45.0.0",
+    "electron-builder": "^26.0.0",
+    "playwright": "^1.64.1",
+    "prettier": "^3.9.10"
+  },
+  "build": {
+    "appId": "com.affiliatedesk.desktop",
+    "productName": "Affiliate Desk",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "desktop/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "app",
+        "to": "app",
+        "filter": [
+          "**/*",
+          "!**/__pycache__/**"
+        ]
+      },
+      {
+        "from": "licenses",
+        "to": "licenses"
+      },
+      {
+        "from": "docs/THIRD-PARTY.md",
+        "to": "THIRD-PARTY.md"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        "dir"
+      ],
+      "extraResources": [
+        {
+          "from": "runtime/mac/affiliate-backend",
+          "to": "backend/affiliate-backend"
+        },
+        {
+          "from": "runtime/mac-tools",
+          "to": "tools"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "zip"
+      ],
+      "signAndEditExecutable": false,
+      "extraResources": [
+        {
+          "from": "runtime/windows",
+          "to": "python"
+        },
+        {
+          "from": "runtime/windows-tools",
+          "to": "tools"
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

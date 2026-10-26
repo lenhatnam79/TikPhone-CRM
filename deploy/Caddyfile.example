@@ -1,0 +1,6 @@
+# Replace with your own DNS name. Run the CRM on loopback on the same server.
+# Set AFFILIATE_PUBLIC_HOST=crm.example.com on the CRM backend.
+# Keep the host private/restricted to your team while piloting.
+crm.example.com {
+    reverse_proxy 127.0.0.1:8765
+}

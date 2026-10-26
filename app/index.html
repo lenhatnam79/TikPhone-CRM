@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Affiliate Desk</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%23226c52%22/%3E%3Ctext x=%227%22 y=%2224%22 fill=%22white%22 font-family=%22sans-serif%22 font-size=%2226%22%3Ea%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div id="auth" class="auth">
+      <section class="auth-story">
+        <div class="logo">a<span>·</span></div>
+        <span class="eyebrow">AFFILIATE DESK / WORKSPACE</span>
+        <h1>Ít thao tác hơn.<br />Nhiều cơ hội hơn.</h1>
+        <p>
+          Một nơi để làm việc với nhãn hàng, quản lý sản phẩm và biến trao đổi
+          thành hợp tác.
+        </p>
+        <div class="story-bottom">
+          CREATOR & AGENCY OPERATIONS <span>01 — MVP</span>
+        </div>
+      </section>
+      <section class="auth-form">
+        <div class="auth-box">
+          <span class="eyebrow">KHÔNG GIAN CỦA ĐỘI NGŨ</span>
+          <h2 id="auth-title">Chào bạn trở lại</h2>
+          <p id="auth-desc">Đăng nhập để tiếp tục công việc.</p>
+          <form id="login-form">
+            <label class="setup"
+              >Tên của bạn<input name="name" autocomplete="name" /></label
+            ><label class="setup"
+              >Mã thiết lập<input
+                name="setup_token"
+                autocomplete="off" /></label
+            ><label
+              >Email<input
+                name="email"
+                type="email"
+                required
+                autocomplete="username" /></label
+            ><label
+              >Mật khẩu<input
+                name="password"
+                type="password"
+                required
+                minlength="12"
+                autocomplete="current-password" /></label
+            ><button class="primary" type="submit" id="auth-submit">
+              Đăng nhập →
+            </button>
+            <p id="auth-error" role="alert"></p>
+          </form>
+          <small
+            >Dữ liệu thuộc workspace riêng của bạn. Không cần mật khẩu
+            TikTok.</small
+          >
+        </div>
+      </section>
+    </div>
+    <div id="shell" hidden>
+      <aside class="sidebar">
+        <a class="brand" href="#overview"
+          ><span class="mark">a·</span>affiliate desk</a
+        ><span class="nav-label">WORKSPACE</span>
+        <nav>
+          <button data-view="overview">◫ <span>Tổng quan</span></button
+          ><button data-view="deals">▤ <span>Cơ hội hợp tác</span></button
+          ><button data-view="brands">◎ <span>Nhãn hàng</span></button
+          ><button data-view="products">◇ <span>Sản phẩm</span></button>
+        </nav>
+        <span class="nav-label">CÔNG CỤ</span>
+        <nav>
+          <button data-view="drafts">✎ <span>Trợ lý soạn nháp</span></button
+          ><button data-view="devices">▯ <span>Thiết bị Android</span></button
+          ><button data-view="team">♧ <span>Đội ngũ</span></button>
+        </nav>
+        <div class="sidebar-note">
+          <span class="live-dot"></span> Không gian riêng
+          <p>Trao đổi trên TikTok.<br />Vận hành tại một nơi.</p>
+        </div>
+        <div class="profile">
+          <span id="avatar"></span>
+          <div>
+            <strong id="user-name"></strong><small id="user-role"></small>
+          </div>
+          <button id="logout" title="Đăng xuất" aria-label="Đăng xuất">
+            ↗
+          </button>
+        </div>
+      </aside>
+      <main>
+        <header>
+          <div class="breadcrumb">
+            Workspace <span>/</span> <strong id="breadcrumb">Tổng quan</strong>
+          </div>
+          <div class="header-actions">
+            <span id="sync-status">Đã kết nối</span
+            ><button id="refresh" class="quiet">↻ Làm mới</button>
+          </div>
+        </header>
+        <section class="page">
+          <div class="page-head">
+            <div>
+              <span class="eyebrow" id="page-eyebrow">BỨC TRANH HÔM NAY</span>
+              <h1 id="page-title">Tổng quan</h1>
+              <p id="page-desc"></p>
+            </div>
+            <button id="add-main" class="primary">＋ Tạo cơ hội</button>
+          </div>
+          <div id="content"></div>
+        </section>
+        <footer>
+          Affiliate Desk <span>Creator & Agency Workspace · MVP 0.1</span>
+        </footer>
+      </main>
+    </div>
+    <dialog id="editor">
+      <form id="edit-form">
+        <div class="modal-head">
+          <div>
+            <span class="eyebrow">WORKSPACE</span>
+            <h2 id="editor-title"></h2>
+          </div>
+          <button
+            type="button"
+            class="quiet"
+            id="close-editor"
+            aria-label="Đóng"
+          >
+            ✕
+          </button>
+        </div>
+        <div id="editor-fields" class="form-grid"></div>
+        <p id="edit-error" role="alert"></p>
+        <div class="modal-actions">
+          <button type="button" id="delete-record" class="danger">
+            Xoá bản ghi</button
+          ><button type="submit" class="primary">Lưu thay đổi →</button>
+        </div>
+      </form>
+    </dialog>
+    <div id="toast" role="status"></div>
+  </body>
+</html>

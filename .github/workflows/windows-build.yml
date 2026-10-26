@@ -1,0 +1,46 @@
+name: Build Windows
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'app/**'
+      - 'desktop/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'package*.json'
+      - '.github/workflows/windows-build.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: windows-build-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 25
+    env:
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: python scripts/prepare_runtime.py --target windows
+      - name: Verify actual bundled Python runtime
+        run: ./runtime/windows/python.exe -m unittest discover -s tests -v
+      - run: npm run check
+      - run: npm run build:win
+      - name: Smoke test packaged Windows app
+        run: npm run test:desktop
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Affiliate-Desk-Windows-x64
+          path: dist/*.zip
+          if-no-files-found: error
+          retention-days: 7
